@@ -5,10 +5,10 @@ const AuthFrom = () => {
     <div className={styles.container}>
       <form className={styles.form}>
         <label>SIGN UP</label>
-        <input type="text" placeholder="EMAIL" />
-        <input type="text" placeholder="USERNAME" />
-        <input type="text" placeholder="PASSWORD" />
-        <input type="text" placeholder="REPEAT PASSWORD" />
+        <input placeholder="EMAIL" type="email" />
+        <input placeholder="USERNAME" type="text" />
+        <input placeholder="PASSWORD" type="password" />
+        <input placeholder="REPEAT PASSWORD" type="password" />
         <div className={styles.buttonHolder}>
           <input type="submit" value="SIGN UP" />
           <span>
@@ -19,8 +19,8 @@ const AuthFrom = () => {
       </form>
       <form className={styles.form}>
         <label>LOGIN</label>
-        <input type="text" placeholder="EMAIL" />
-        <input type="text" placeholder="PASSWORD" />
+        <input placeholder="EMAIL" type="email" />
+        <input placeholder="PASSWORD" type="password" />
         <div className={styles.buttonHolder}>
           <input type="submit" value="LOGIN" />
         </div>
