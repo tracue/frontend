@@ -1,16 +1,19 @@
 import './App.scss';
 import LandingPage from './components/pages/landing-page/LandingPage';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PrivateRoute from './components/private-route/PrivateRoute';
 import Home from './components/pages/home/Home';
 import { CookiesProvider } from 'react-cookie';
-import {ApolloClient,InMemoryCache,ApolloProvider,useQuery,gql} from "@apollo/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql,
+} from '@apollo/client';
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_ENDPOINT,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 function App() {
@@ -20,12 +23,12 @@ function App() {
       <CookiesProvider>
         <Router>
           <div className="App">
-              <Route exact path='/'>
-                <LandingPage />
-              </Route>
-              <PrivateRoute path='/home'>
-                <Home/>
-              </PrivateRoute>
+            <Route exact path="/">
+              <LandingPage />
+            </Route>
+            <PrivateRoute path="/home">
+              <Home />
+            </PrivateRoute>
           </div>
         </Router>
       </CookiesProvider>
