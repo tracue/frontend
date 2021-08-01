@@ -1,5 +1,4 @@
 import styles from '../../../../styles/AuthForm.module.scss';
-import { login as AuthLogin } from '../../../private-route/Auth';
 import { useHistory } from 'react-router';
 import { useState } from 'react';
 import validator from 'validator';
@@ -10,7 +9,7 @@ import { useMutation } from '@apollo/client';
 import { useCookies } from 'react-cookie';
 
 const AuthFrom = () => {
-  const [cookies, setCookie] = useCookies(['token']);
+  const [cookies, setCookie] = useCookies(['TRACUE_AUTH']);
   // signup/login mutation
   const [signupMutation] = useMutation(SIGN_UP);
   const [loginMutation] = useMutation(LOGIN);
@@ -83,8 +82,7 @@ const AuthFrom = () => {
       }).then(
         (res) => {
           if (res.data) {
-            setCookie('token', res.data.login.token, { path: '/', maxAge: 60 * 60 * 24 * 30 });
-            AuthLogin();
+            setCookie('TRACUE_AUTH', res.data.login.token, { path: '/', maxAge: 60 * 60 * 24 * 30 });
             history.push('/home');
           }
         },
@@ -110,8 +108,7 @@ const AuthFrom = () => {
       }).then(
         (res) => {
           if (res.data) {
-            setCookie('token', res.data.signup.token, { path: '/', maxAge: 60 * 60 * 24 * 30 });
-            AuthLogin();
+            setCookie('TRACUE_AUTH', res.data.signup.token, { path: '/', maxAge: 60 * 60 * 24 * 30 });
             history.push('/home');
           }
         },

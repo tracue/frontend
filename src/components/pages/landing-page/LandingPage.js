@@ -1,31 +1,30 @@
 import styles from '../../../styles/LandingPage.module.scss';
 import AuthFrom from './form/AuthForm';
 import { useCookies } from 'react-cookie';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { useHistory } from 'react-router';
-import { login } from '../../private-route/Auth';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { ME } from '../../../resources/queries';
 
 const LandingPage = () => {
   const history = useHistory();
-  const [cookies, setCookie] = useCookies(['token']);
+  const [cookies, setCookie] = useCookies(['TRACUE_AUTH']);
 
   const [validation, { loading, data, error }] = useLazyQuery(ME, {
     context: {
       headers: {
-        authorization: cookies.token,
+        authorization: cookies.TRACUE_AUTH,
       },
     },
     fetchPolicy: 'no-cache',
   });
 
   useEffect(() => {
-    if (cookies.token) {
+    if (cookies.TRACUE_AUTH) {
       //check if cookie is valid
       validation();
     }
-  }, [cookies.token]);
+  }, [cookies.TRACUE_AUTH]);
 
   // if token is valid invoke login function and navigate user to home page
   useEffect(() => {

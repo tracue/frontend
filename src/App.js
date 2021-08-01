@@ -7,17 +7,19 @@ import { CookiesProvider } from 'react-cookie';
 import {
   ApolloClient,
   InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql,
+  ApolloProvider
 } from '@apollo/client';
+
+
+
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_ENDPOINT,
   cache: new InMemoryCache(),
 });
 
 function App() {
-  console.log(process.env.REACT_APP_API_ENDPOINT);
+
+
   return (
     <ApolloProvider client={client}>
       <CookiesProvider>

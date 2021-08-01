@@ -1,18 +1,16 @@
-import { logOut as logOutAuth } from '../../private-route/Auth';
 import { useHistory } from 'react-router';
 import { useCookies } from 'react-cookie';
 
 const Home = () => {
-  const [, , removeCookie] = useCookies(['token']);
+  const [, , removeCookie] = useCookies(['TRACUE_AUTH']);
   const history = useHistory();
   const logout = () => {
-    removeCookie('token', { path: '/' });
-    logOutAuth();
+    removeCookie('TRACUE_AUTH', { path: '/' });
     history.push('/');
   };
   return (
     <div>
-      home
+      Home
       <button onClick={logout}>Logout</button>
     </div>
   );
