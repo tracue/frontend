@@ -29,11 +29,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <div
-        className={cn({
-          [styles.landingPage]: true,
-        })}
-      >
+      <div className={styles.landingPage}>
         <div
           className={cn({
             [styles.loading]: loading,

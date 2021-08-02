@@ -26,26 +26,24 @@ const AuthFrom = () => {
   };
   const history = useHistory();
 
+  // initialize toast message function
+  const showToast = (message) => {
+    toast(message, {
+      position: 'bottom-center',
+      autoClose: 4000,
+      type: 'error',
+    });
+  };
+
   // checks if login/signin inputs are valid inputs
   const checkInputsSignup = () => {
-    let inputsAreValid = true;
     if (!validator.isEmail(form.email)) {
-      toast('Invalid Email', {
-        position: 'bottom-center',
-        autoClose: 4000,
-        type: 'error',
-      });
-      inputsAreValid = false;
-    }
-    if (form.password !== form.repeatPassword) {
-      toast('Passwords Do Not Match', {
-        position: 'bottom-center',
-        autoClose: 4000,
-        type: 'error',
-      });
-      inputsAreValid = false;
-    }
-    if (
+      showToast('Invalid Email');
+      return false;
+    } else if (form.password !== form.repeatPassword) {
+      showToast('Passwords Do Not Match');
+      return false;
+    } else if (
       !validator.isStrongPassword(form.password, {
         minLength: 8,
         minNumbers: 1,
@@ -53,22 +51,14 @@ const AuthFrom = () => {
         minUppercase: 1,
       })
     ) {
-      toast('Password Is Not Strong Enough', {
-        position: 'bottom-center',
-        autoClose: 4000,
-        type: 'error',
-      });
-      inputsAreValid = false;
+      showToast('Password Is Not Strong Enough');
+      return false;
     }
-    return inputsAreValid;
+    return true;
   };
   const checkinputsLogin = () => {
     if (!validator.isEmail(form.email)) {
-      toast('invalid email', {
-        position: 'bottom-center',
-        autoClose: 4000,
-        type: 'error',
-      });
+      showToast('Invalid Email');
       return false;
     }
     return true;
@@ -93,11 +83,7 @@ const AuthFrom = () => {
           }
         },
         (error) => {
-          toast('something went wrong', {
-            position: 'bottom-center',
-            autoClose: 4000,
-            type: 'error',
-          });
+          showToast('Something Went Wrong');
         }
       );
     }
@@ -122,11 +108,7 @@ const AuthFrom = () => {
           }
         },
         (error) => {
-          toast('something went wrong', {
-            position: 'bottom-center',
-            autoClose: 4000,
-            type: 'error',
-          });
+          showToast('something went wrong');
         }
       );
     }
