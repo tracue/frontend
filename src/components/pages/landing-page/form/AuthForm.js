@@ -30,7 +30,7 @@ const AuthFrom = () => {
   const checkInputsSignup = () => {
     let inputsAreValid = true;
     if (!validator.isEmail(form.email)) {
-      toast('invalid email', {
+      toast('Invalid Email', {
         position: 'bottom-center',
         autoClose: 4000,
         type: 'error',
@@ -38,19 +38,22 @@ const AuthFrom = () => {
       inputsAreValid = false;
     }
     if (form.password !== form.repeatPassword) {
-      toast('passwords are not the same', {
+      toast('Passwords Do Not Match', {
         position: 'bottom-center',
         autoClose: 4000,
         type: 'error',
       });
       inputsAreValid = false;
     }
-    if(!validator.isStrongPassword(form.password, {
-      minLength: 8,
-      minNumbers: 1,
-      minUppercase: 1,
-    })){
-      toast('kossher password', {
+    if (
+      !validator.isStrongPassword(form.password, {
+        minLength: 8,
+        minNumbers: 1,
+        minLowercase: 1,
+        minUppercase: 1,
+      })
+    ) {
+      toast('Password Is Not Strong Enough', {
         position: 'bottom-center',
         autoClose: 4000,
         type: 'error',
@@ -82,7 +85,10 @@ const AuthFrom = () => {
       }).then(
         (res) => {
           if (res.data) {
-            setCookie('TRACUE_AUTH', res.data.login.token, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+            setCookie('TRACUE_AUTH', res.data.login.token, {
+              path: '/',
+              maxAge: 60 * 60 * 24 * 30,
+            });
             history.push('/home');
           }
         },
@@ -108,7 +114,10 @@ const AuthFrom = () => {
       }).then(
         (res) => {
           if (res.data) {
-            setCookie('TRACUE_AUTH', res.data.signup.token, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+            setCookie('TRACUE_AUTH', res.data.signup.token, {
+              path: '/',
+              maxAge: 60 * 60 * 24 * 30,
+            });
             history.push('/home');
           }
         },

@@ -9,7 +9,7 @@ import { useHistory } from 'react-router';
 const PrivateRoute = ({ children, ...rest }) => {
   const [cookies, setCookie] = useCookies(['TRACUE_AUTH']);
   const [auth, setAuth] = useState(false);
-  const history=useHistory()
+  const history = useHistory();
   const [validation, { loading, data, error }] = useLazyQuery(ME, {
     context: {
       headers: {
@@ -22,7 +22,7 @@ const PrivateRoute = ({ children, ...rest }) => {
     if (cookies.TRACUE_AUTH) {
       //check if cookie is valid
       validation();
-    }else{
+    } else {
       setAuth(false);
     }
   }, [cookies.TRACUE_AUTH]);
@@ -30,19 +30,25 @@ const PrivateRoute = ({ children, ...rest }) => {
     if (data && data.me) {
       setAuth(true);
     }
-  }, [data, history])
-  
+  }, [data, history]);
 
   return (
-    <Route {...rest} render={({ location }) => {
-      return auth
-        ? children
-        : <Redirect to={{
-            pathname: '/',
-            state: { from: location }
-          }} />
-    }} />
-  )
+    <Route
+      {...rest}
+      render={({ location }) => {
+        return auth ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/',
+              state: { from: location },
+            }}
+          />
+        );
+      }}
+    />
+  );
 };
 
 export default PrivateRoute;

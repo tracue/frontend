@@ -17,6 +17,23 @@
     }
     color: #ffffff;
   }
+
+  .loading {
+    font-family: 'Ubuntu', sans-serif;
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+      letter-spacing: 0.5rem;
+    }
+    h2 {
+      display: none;
+    }
+    color: #ffffff;
+  }
+
+  .hidden {
+    display: none;
+  }
 }
 
 @media (max-width: 900px) {
