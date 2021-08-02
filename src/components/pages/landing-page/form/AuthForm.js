@@ -9,7 +9,7 @@ import { useMutation } from '@apollo/client';
 import { useCookies } from 'react-cookie';
 
 const AuthFrom = () => {
-  const [cookies, setCookie] = useCookies(['TRACUE_AUTH']);
+  const [, setCookie] = useCookies(['TRACUE_AUTH']);
   // signup/login mutation
   const [signupMutation] = useMutation(SIGN_UP);
   const [loginMutation] = useMutation(LOGIN);

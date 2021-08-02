@@ -2,15 +2,14 @@ import { Route, Redirect } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { useLazyQuery } from '@apollo/client';
 import { ME } from '../../resources/queries';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const [cookies, setCookie] = useCookies(['TRACUE_AUTH']);
+  const [cookies] = useCookies(['TRACUE_AUTH']);
   const [auth, setAuth] = useState(false);
   const history = useHistory();
-  const [validation, { loading, data, error }] = useLazyQuery(ME, {
+  const [validation, { data }] = useLazyQuery(ME, {
     context: {
       headers: {
         authorization: cookies.TRACUE_AUTH,
@@ -25,7 +24,7 @@ const PrivateRoute = ({ children, ...rest }) => {
     } else {
       setAuth(false);
     }
-  }, [cookies.TRACUE_AUTH]);
+  }, [cookies.TRACUE_AUTH, validation]);
   useEffect(() => {
     if (data && data.me) {
       setAuth(true);

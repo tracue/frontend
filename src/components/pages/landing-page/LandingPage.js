@@ -9,9 +9,9 @@ import cn from 'classnames';
 
 const LandingPage = () => {
   const history = useHistory();
-  const [cookies, setCookie] = useCookies(['TRACUE_AUTH']);
+  const [cookies] = useCookies(['TRACUE_AUTH']);
 
-  const { loading, data, error } = useQuery(ME, {
+  const { loading, data } = useQuery(ME, {
     context: {
       headers: {
         authorization: cookies.TRACUE_AUTH ?? '',
