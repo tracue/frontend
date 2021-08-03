@@ -31,7 +31,7 @@ const AuthFrom = () => {
     toast(message, {
       position: 'bottom-center',
       autoClose: 4000,
-      type: 'error',
+      type: 'info',
     });
   };
 
@@ -108,7 +108,7 @@ const AuthFrom = () => {
           }
         },
         (error) => {
-          showToast('something went wrong');
+          showToast('Something Went Wrong');
         }
       );
     }

@@ -1,3 +1,5 @@
+@import './variables';
+
 .container {
   label {
     color: #ffffff;
@@ -6,7 +8,7 @@
   display: flex;
   flex-flow: column nowrap;
   max-width: 350px;
-  background-color: #374045;
+  background-color: $card;
   border-radius: 30px;
   gap: 1rem;
 
@@ -39,13 +41,12 @@
 
       input {
         width: 95px;
-        background-color: #d89216;
+        background-color: $button;
         color: #ffffff;
         cursor: pointer;
-        transition: background-color 0.2s, box-shadow 0.2s;
+        transition: background-color 0.2s;
         &:hover {
-          background-color: #e69b1b;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          background-color: $button-hover;
         }
       }
     }

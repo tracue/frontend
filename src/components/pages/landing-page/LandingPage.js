@@ -47,6 +47,7 @@ const LandingPage = () => {
         >
           <AuthFrom />
         </div>
+        <span className={styles.copyright}>Copyright © 2021</span>
       </div>
     </>
   );
