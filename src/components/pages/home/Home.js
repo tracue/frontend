@@ -1,5 +1,7 @@
 import { useHistory } from 'react-router';
 import { useCookies } from 'react-cookie';
+import Navbar from '../../navbar/Navbar';
+import styles from '../../../styles/Home.module.scss';
 
 const Home = () => {
   const [, , removeCookie] = useCookies(['TRACUE_AUTH']);
@@ -9,9 +11,12 @@ const Home = () => {
     history.push('/');
   };
   return (
-    <div>
-      Home
-      <button onClick={logout}>Logout</button>
+    <div className={styles.home}>
+      <Navbar />
+      <div className={styles.content}>
+        Home
+        <button onClick={logout}>Logout</button>
+      </div>
     </div>
   );
 };
