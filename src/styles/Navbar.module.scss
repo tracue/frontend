@@ -1,7 +1,7 @@
 @import './variables';
 
 a {
-  color: #fff;
+  color: #ffffff;
 }
 
 /* navbar */
@@ -10,39 +10,33 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #1c1c1c;
-  width: 100%;
+  z-index: 1;
 }
 
 .navbar ul {
   margin: 0;
   padding: 0;
   list-style: none;
-  overflow: hidden;
-  background-color: #1c1c1c;
 }
 
 .navbar li a {
   display: block;
   padding: 1rem;
-  border-right: 1px solid #383838;
   text-decoration: none;
 }
-
-.navbar li a:hover,
-.navbar .menuButton:hover {
-  background-color: #383838;
-}
-
 .navbar .container {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   gap: 1rem;
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 0;
 
   a {
+    font-family: 'Ubuntu';
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 4px;
     text-decoration: none;
   }
 }
@@ -60,51 +54,10 @@ a {
     border-right: none;
   }
 
-  .categories {
-    flex-grow: 1;
-
-    .ctitle {
-      cursor: pointer;
-      svg {
-        position: relative;
-        font-size: 0.75rem;
-        top: 0.2rem;
-      }
-    }
-
-    .cdropdown {
-      display: none;
-
-      .clist {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        flex-flow: column;
-        background-color: rgb(37, 37, 37);
-        border: 1px solid #1c1c1c;
-        min-width: 7.628rem;
-        top: 3rem;
-        right: 4.4rem;
-
-        &:last-child {
-          border-bottom: none;
-        }
-
-        li {
-          list-style: none;
-
-          a {
-            border-right: none;
-            border-bottom: 1px solid #1c1c1c;
-          }
-        }
-      }
-    }
-
-    &:hover {
-      .cdropdown {
-        display: block;
-      }
+  li {
+    position: relative;
+    a {
+      font-family: 'Roboto';
     }
   }
 }
