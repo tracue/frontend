@@ -1,0 +1,98 @@
+@import './variables';
+
+.account {
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 1rem;
+    font-family: 'Roboto';
+    color: #fff;
+
+    @media (max-width: 768px) {
+      justify-content: flex-start;
+    }
+  }
+
+  .opened {
+    background-color: rgba($color: #272727, $alpha: 0.56);
+
+    @media (max-width: 768px) {
+      background-color: rgba($color: #272727, $alpha: 0);
+    }
+  }
+
+  .userMenu {
+    background-color: rgba($color: #272727, $alpha: 0.56);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    border-radius: 0px 0px 10px 0px;
+    min-width: 250px;
+
+    @media (max-width: 768px) {
+      max-width: 250px;
+    }
+
+    .welcome {
+      font-family: 'Roboto';
+      color: #ffffff;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 5px 10px;
+      gap: 5px;
+      align-items: center;
+
+      span {
+        font-family: 'Roboto';
+        font-size: small;
+        color: #ffffff;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 5px 25px;
+        cursor: pointer;
+
+        svg {
+          border-left: 1px solid #ffffff;
+          padding: 7px 0 7px 5px;
+        }
+      }
+    }
+
+    .logoutButton {
+      display: flex;
+      flex-direction: row-reverse;
+      padding-top: 40px;
+
+      button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background-color: #ffffff;
+        padding: 10px 25px;
+        border-radius: 10px 0 10px 0;
+        transition: background-color 0.2s;
+        font-size: 0.75rem;
+        font-weight: 700;
+        font-family: 'Roboto';
+        color: #000000;
+        &:hover {
+          background-color: rgb(180, 180, 180);
+        }
+      }
+    }
+  }
+}

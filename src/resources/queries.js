@@ -16,10 +16,33 @@ export const LOGIN = gql`
   }
 `;
 
-export const ME = gql`
+export const AUTHENTICATE = gql`
   query {
     me {
       email
     }
   }
 `;
+
+export const ME = gql`
+  query {
+    me {
+      username
+      avatar
+      bio
+      email
+    }
+  }
+`;
+
+export const getRequestOptions = (cookies) => {
+  return {
+    context: {
+      headers: {
+        authorization: cookies.TRACUE_AUTH ?? '',
+      },
+    },
+    fetchPolicy: 'no-cache',
+  };
+};
+

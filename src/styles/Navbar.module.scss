@@ -1,0 +1,181 @@
+@import './variables';
+
+a {
+  color: #ffffff;
+}
+
+/* navbar */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar li a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  gap: 1rem;
+  padding: 0.25rem 0;
+
+  a {
+    font-family: 'Ubuntu';
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-decoration: none;
+  }
+}
+
+/* navlist */
+
+.navbar .navlist {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-height: none;
+  transition: max-height 0.2s ease-out;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  li {
+    position: relative;
+    a {
+      font-family: 'Roboto';
+    }
+  }
+}
+
+/* menu icon */
+
+.navbar .menuIcon {
+  cursor: pointer;
+  display: none;
+  padding: 1rem;
+  user-select: none;
+}
+
+.navbar .menuIcon .navIcon {
+  background: #fff;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.navbar .menuIcon .navIcon:before,
+.navbar .menuIcon .navIcon:after {
+  background: #fff;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.navbar .menuIcon .navIcon:before {
+  top: 6px;
+}
+
+.navbar .menuIcon .navIcon:after {
+  top: -6px;
+}
+
+/* menu btn */
+
+.navbar .menuButton {
+  display: none;
+}
+
+.navbar .menuButton:checked ~ .navlist {
+  display: block;
+  max-height: auto;
+}
+
+.navbar .menuButton:checked ~ .menuIcon .navIcon {
+  background: transparent;
+}
+
+.navbar .menuButton:checked ~ .menuIcon .navIcon:before {
+  transform: rotate(-45deg);
+}
+
+.navbar .menuButton:checked ~ .menuIcon .navIcon:after {
+  transform: rotate(45deg);
+}
+
+.navbar .menuButton:checked ~ .menuIcon:not(.steps) .navIcon:before,
+.navbar .menuButton:checked ~ .menuIcon:not(.steps) .navIcon:after {
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+
+    li a {
+      border-right: none;
+    }
+
+    .navlist {
+      display: none;
+      width: 100%;
+
+      li {
+        padding: 0;
+      }
+
+      .categories {
+        padding: 0;
+
+        .ctitle {
+          padding: 1rem;
+        }
+
+        .cdropdown {
+          .clist {
+            position: static;
+          }
+        }
+      }
+    }
+
+    .menuIcon {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar .menuButton:checked ~ .navlist {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar {
+    .container {
+      flex-grow: 1;
+    }
+  }
+}

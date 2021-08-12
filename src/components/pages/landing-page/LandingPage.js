@@ -4,21 +4,14 @@ import { useCookies } from 'react-cookie';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useQuery } from '@apollo/client';
-import { ME } from '../../../resources/queries';
+import { AUTHENTICATE, getRequestOptions  } from '../../../resources/queries';
 import cn from 'classnames';
 
 const LandingPage = () => {
   const history = useHistory();
   const [cookies] = useCookies(['TRACUE_AUTH']);
 
-  const { loading, data } = useQuery(ME, {
-    context: {
-      headers: {
-        authorization: cookies.TRACUE_AUTH ?? '',
-      },
-    },
-    fetchPolicy: 'no-cache',
-  });
+  const { loading, data } = useQuery(AUTHENTICATE , getRequestOptions(cookies));
 
   // if token is valid invoke login function and navigate user to home page
   useEffect(() => {
