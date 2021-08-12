@@ -1,0 +1,33 @@
+@import './variables';
+
+.searchbar {
+  display: flex;
+  background-color: #383838;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+
+  a {
+    display: flex;
+    font-size: 1.75rem;
+  }
+
+  input {
+    background-color: #383838;
+    flex-grow: 1;
+    color: #ffff;
+    outline: none;
+    border: none;
+    width: 6vw;
+
+    transition: width 1s ease 0s;
+    &:focus {
+      width: 20vw;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .searchbar {
+    flex-grow: 1;
+  }
+}
