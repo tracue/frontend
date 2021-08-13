@@ -1,5 +1,6 @@
 import styles from '../../../styles/Home.module.scss';
 import Layout from '../../layout/Layout';
+import MovieCard from '../../movie-card/MovieCard'
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
               <div className={styles.poster3}></div>
             </div>
           </div>
+          <MovieCard />
         </div>
       </Layout>
     </>

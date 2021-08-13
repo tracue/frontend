@@ -1,0 +1,112 @@
+.card {
+  position: relative;
+  display: flex;
+  height: 200px;
+  width: 332px;
+  border-radius: 8px;
+  background-color: white;
+  .title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 18px;
+    color: white;
+    font: bold 16px 'Ubuntu';
+    visibility: visible;
+    transition: visibility 0.25s, opacity 0.25s linear, bottom 0.25s;
+  }
+  .icons {
+    transition: 0.25s;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+    * {
+      margin: 8px;
+    }
+  }
+  .isWatched {
+    padding: 3px 6px;
+    position: absolute;
+    color: #717171;
+    background-color: #cdcdcd;
+    border-radius: 8px 0 8px 0;
+    display: flex;
+    align-items: center;
+    font-family: 'Ubuntu';
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0.4;
+    transition: opacity 0.25s;
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+  .image {
+    width: 290px;
+    border-radius: 8px 0 0 8px;
+    object-fit: cover;
+    transition: width 0.25s;
+  }
+}
+.cardDetails {
+  flex-grow: 1;
+  width: 42px;
+  overflow: hidden;
+  text-align: center;
+  .movieTitle {
+    margin: 16px;
+    color: black;
+    margin: 10px 16px 0 16px;
+    font: bold 16px 'Ubuntu';
+    transition: 0.25s;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.25s, opacity 0.25s linear;
+  }
+  .description {
+    visibility: hidden;
+    display: inline-block;
+    opacity: 0;
+    transition: visibility 0.25s, opacity 0.25s linear;
+    width: 160px;
+    font-size: 13px;
+    color: #767676;
+    text-align: justify;
+    margin: 9px 0 0 0;
+  }
+}
+.card {
+  &:hover {
+    .title {
+      bottom: -10%;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .image {
+      width: 146px;
+    }
+    .icons {
+      position: static;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0 10px 10px 10px;
+    }
+    .description {
+      visibility: visible;
+      opacity: 1;
+    }
+    .isWatched {
+      opacity: 1;
+    }
+    .movieTitle {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

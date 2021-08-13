@@ -9,7 +9,7 @@ const PrivateRoute = ({ children, ...rest }) => {
   const [cookies] = useCookies(['TRACUE_AUTH']);
   const [auth, setAuth] = useState(false);
   const history = useHistory();
-  const [validation, { data }] = useLazyQuery(ME, {
+  const [validation, { loading, data, error }] = useLazyQuery(ME, {
     context: {
       headers: {
         authorization: cookies.TRACUE_AUTH,
@@ -23,6 +23,7 @@ const PrivateRoute = ({ children, ...rest }) => {
       validation();
     } else {
       setAuth(false);
+      history.push('/')
     }
   }, [cookies.TRACUE_AUTH, validation]);
   useEffect(() => {
@@ -30,24 +31,51 @@ const PrivateRoute = ({ children, ...rest }) => {
       setAuth(true);
     }
   }, [data, history]);
+  useEffect(() => {
+    if (!loading && error) {
+      history.replace('/')
+    }
+  }, [data, error])
+
 
   return (
-    <Route
-      {...rest}
-      render={({ location }) => {
-        return auth ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/',
-              state: { from: location },
-            }}
-          />
-        );
-      }}
-    />
+    <>
+      <Route
+        {...rest}
+        render={({ location }) => {
+          return auth ? (
+            children
+          ) : (
+            <div>loading</div>
+          );
+        }}
+      />
+    </>
   );
 };
+// if (loading) {
+//   return (
+//     <div>loading</div>
+//   )
+// }
+// else {
+//   if (auth) {
+//     return (
+//       <Route
+//         {...rest}
+//         render={({ location }) => {
+//           return children
+//         }
+//         }
+//       />
+//     )
+//   }
+//   else {
+//     history.replace('/')
+//     return (
+//       <></>
+//     )
+//   }
+// }
 
 export default PrivateRoute;

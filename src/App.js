@@ -9,6 +9,7 @@ import {
   InMemoryCache,
   ApolloProvider
 } from '@apollo/client';
+import Trending from './components/pages/trending/Trending';
 
 
 
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <PrivateRoute path="/home">
               <Home />
+            </PrivateRoute>
+            <PrivateRoute path="/trending">
+              <Trending />
             </PrivateRoute>
           </div>
         </Router>

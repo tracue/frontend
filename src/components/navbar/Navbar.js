@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.container}>
-        <Link href="/home">TRACUE</Link>
+        <Link to="/home">TRACUE</Link>
       </div>
 
       <input type="checkbox" className={styles.menuButton} id="menu-btn" />
