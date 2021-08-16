@@ -35,6 +35,36 @@ export const ME = gql`
   }
 `;
 
+export const TRENDING = gql`
+  query($page:Int!){
+    trending(page:$page){
+      movies{
+        id
+        title
+        description
+        posterUrl
+        isWatched
+      }
+      totalPages
+    }
+  }
+`;
+
+export const ADDTOWATCHED = gql`
+  mutation($movieId:String!){
+    addToWatched(movieId:$movieId){
+      email
+    }
+  }
+`;
+export const REMOVEFROMWATCHED = gql`
+  mutation($movieId:String!){
+    removeFromWatched(movieId:$movieId){
+      email
+    }
+  }
+`;
+
 export const getRequestOptions = (cookies) => {
   return {
     context: {

@@ -2,11 +2,6 @@
 
 .layout {
   &::before {
-    background-image: linear-gradient(
-      180deg,
-      $background-dark-blue,
-      $background-light-blue
-    );
     min-height: 100vh;
     max-height: 100vh;
     width: 100%;
@@ -19,4 +14,5 @@
   flex-flow: column nowrap;
   min-height: 100vh;
   padding: 0 15%;
+  padding-bottom: 200px;
 }

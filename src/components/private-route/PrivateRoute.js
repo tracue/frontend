@@ -27,7 +27,7 @@ const PrivateRoute = ({ children, ...rest }) => {
     }
   }, [cookies.TRACUE_AUTH, validation]);
   useEffect(() => {
-    if (data && data.me) {
+    if (data?.me) {
       setAuth(true);
     }
   }, [data, history]);
@@ -53,29 +53,5 @@ const PrivateRoute = ({ children, ...rest }) => {
     </>
   );
 };
-// if (loading) {
-//   return (
-//     <div>loading</div>
-//   )
-// }
-// else {
-//   if (auth) {
-//     return (
-//       <Route
-//         {...rest}
-//         render={({ location }) => {
-//           return children
-//         }
-//         }
-//       />
-//     )
-//   }
-//   else {
-//     history.replace('/')
-//     return (
-//       <></>
-//     )
-//   }
-// }
 
 export default PrivateRoute;

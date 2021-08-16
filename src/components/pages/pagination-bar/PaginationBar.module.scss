@@ -1,0 +1,14 @@
+.container {
+  text-align: center;
+  .buttons {
+    display: inline-block;
+  }
+  .sideButtons {
+    border: none;
+    color: white;
+    background-color: transparent;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

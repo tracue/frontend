@@ -15,7 +15,6 @@ const Home = () => {
               <div className={styles.poster3}></div>
             </div>
           </div>
-          <MovieCard />
         </div>
       </Layout>
     </>

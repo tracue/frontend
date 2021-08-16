@@ -5,7 +5,9 @@
   width: 332px;
   border-radius: 8px;
   background-color: white;
+  margin: 10px 0;
   .title {
+    width: 150px;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -27,6 +29,9 @@
     * {
       margin: 8px;
     }
+    span {
+      margin: 0;
+    }
   }
   .isWatched {
     padding: 3px 6px;
@@ -39,7 +44,7 @@
     font-family: 'Ubuntu';
     font-size: 14px;
     font-weight: bold;
-    opacity: 0.4;
+    opacity: 0.6;
     transition: opacity 0.25s;
     svg {
       height: 20px;
@@ -60,6 +65,8 @@
   text-align: center;
   .movieTitle {
     margin: 16px;
+    width: 50px;
+    display: inline;
     color: black;
     margin: 10px 16px 0 16px;
     font: bold 16px 'Ubuntu';
@@ -83,6 +90,7 @@
 }
 .card {
   &:hover {
+    width: 332px !important;
     .title {
       bottom: -10%;
       opacity: 0;
@@ -95,12 +103,22 @@
       position: static;
       flex-direction: row;
       justify-content: space-between;
-      padding: 0 10px 10px 10px;
+      padding: 0 10px 0 10px;
+      margin: 0;
     }
+
     .description {
       visibility: visible;
       opacity: 1;
+      display: block;
+      align-self: center;
     }
+    .cardDetails {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     .isWatched {
       opacity: 1;
     }

@@ -32,7 +32,7 @@ function App() {
             <PrivateRoute path="/home">
               <Home />
             </PrivateRoute>
-            <PrivateRoute path="/trending">
+            <PrivateRoute path="/trending/:page">
               <Trending />
             </PrivateRoute>
           </div>
