@@ -4,6 +4,7 @@ import { useLazyQuery } from '@apollo/client';
 import { ME } from '../../resources/queries';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import Loading from '../loading/Loading';
 
 const PrivateRoute = ({ children, ...rest }) => {
   const [cookies] = useCookies(['TRACUE_AUTH']);
@@ -46,7 +47,7 @@ const PrivateRoute = ({ children, ...rest }) => {
           return auth ? (
             children
           ) : (
-            <div>loading</div>
+            <Loading />
           );
         }}
       />

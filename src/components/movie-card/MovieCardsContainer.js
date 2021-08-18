@@ -7,7 +7,7 @@ const MovieCardsContainer = ({ movies }) => {
     return (
         <>
             {movies && <div className={styles.container}>
-                {movies.trending.movies.map(movie => (
+                {movies.map(movie => (
                     <MovieCard movie={movie} />
                 ))}
             </div>}

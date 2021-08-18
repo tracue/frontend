@@ -9,7 +9,8 @@ import {
   InMemoryCache,
   ApolloProvider
 } from '@apollo/client';
-import Trending from './components/pages/trending/Trending';
+import { TRENDING } from './resources/queries';
+import SeeMore from './components/pages/trending/SeeMore';
 
 
 
@@ -33,7 +34,7 @@ function App() {
               <Home />
             </PrivateRoute>
             <PrivateRoute path="/trending/:page">
-              <Trending />
+              <SeeMore title='Trending' QUERY={TRENDING} name={'trending'} />
             </PrivateRoute>
           </div>
         </Router>
