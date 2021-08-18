@@ -1,0 +1,158 @@
+.card {
+  position: relative;
+  display: flex;
+  height: 200px;
+  width: 332px;
+  border-radius: 8px;
+  background-color: white;
+  margin: 10px 0;
+  .gradient {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 290px;
+    height: 50%;
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    opacity: 1;
+    visibility: visible;
+    transition: 0.25s;
+    border-radius: 0 0 0 8px;
+  }
+  .title {
+    width: 150px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 18px;
+    color: white;
+    font: bold 16px 'Ubuntu';
+    visibility: visible;
+    transition: visibility 0.25s, opacity 0.25s linear, bottom 0.25s;
+  }
+  .icons {
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+    span {
+      margin: 4px 8px;
+      &:hover {
+        cursor: pointer;
+      }
+      path {
+        transition: fill 0.25s;
+        fill: rgb(50, 50, 50);
+      }
+    }
+  }
+  .isWatched {
+    padding: 3px 6px;
+    position: absolute;
+    color: #717171;
+    background-color: #cdcdcd;
+    border-radius: 8px 0 8px 0;
+    display: flex;
+    align-items: center;
+    font-family: 'Ubuntu';
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0.6;
+    transition: opacity 0.25s;
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+  .image {
+    width: 290px;
+    border-radius: 8px 0 0 8px;
+    object-fit: cover;
+    transition: width 0.25s;
+  }
+}
+.cardDetails {
+  flex-grow: 1;
+  width: 42px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  .movieTitle {
+    display: inline-block;
+    color: black;
+    width: 125px !important;
+    display: inline-block;
+    margin: 0;
+    padding: 10px 10px 0 10px;
+    font: bold 16px 'Ubuntu';
+    width: 100%;
+    transition: 0.25s;
+    white-space: normal;
+    visibility: hidden;
+    text-align: left;
+    opacity: 0;
+    transition: visibility 0.25s, opacity 0.25s linear;
+  }
+  .description {
+    visibility: hidden;
+    display: inline-block;
+    width: 135px;
+    opacity: 0;
+    transition: visibility 0.25s, opacity 0.25s linear;
+    font-size: 13px;
+    color: #767676;
+    text-align: justify;
+    padding: 10px 0 0 10px;
+    margin: 0;
+  }
+}
+.card {
+  &:hover {
+    width: 332px !important;
+    .gradient {
+      width: 146px;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .title {
+      bottom: -10%;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .image {
+      width: 146px;
+    }
+
+    .description {
+      visibility: visible;
+      opacity: 1;
+      display: block;
+      align-self: center;
+    }
+
+    .isWatched {
+      opacity: 1;
+    }
+    .movieTitle {
+      visibility: visible;
+      opacity: 1;
+      display: block;
+      align-self: center;
+    }
+  }
+}
+.isFavorite {
+  path {
+    transition: fill 0.25s;
+    fill: rgb(207, 0, 0) !important;
+  }
+}
+.save {
+  path {
+    background: aqua;
+    fill: brown;
+  }
+}

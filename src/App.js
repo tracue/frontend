@@ -4,7 +4,17 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PrivateRoute from './components/private-route/PrivateRoute';
 import Home from './components/pages/home/Home';
 import { CookiesProvider } from 'react-cookie';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider
+} from '@apollo/client';
+import { TRENDING } from './resources/queries';
+import SeeMore from './components/pages/trending/SeeMore';
+
+
+
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_API_ENDPOINT,
@@ -22,6 +32,9 @@ function App() {
             </Route>
             <PrivateRoute path="/home">
               <Home />
+            </PrivateRoute>
+            <PrivateRoute path="/trending/:page">
+              <SeeMore title='Trending' QUERY={TRENDING} name={'trending'} />
             </PrivateRoute>
           </div>
         </Router>

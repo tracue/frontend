@@ -1,19 +1,21 @@
-const SaveIcon = (props) => {
+import * as React from "react"
+
+function saveIcon(props) {
   return (
     <svg
-      width={20}
-      height={20}
-      viewBox="0 0 23 29"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
-        d="M0 2.811C0 1.26 1.287 0 2.875 0h17.25C21.713 0 23 1.259 23 2.811v23.895c0 .526-.3 1.008-.78 1.25-.479.24-1.055.2-1.493-.107L11.5 21.405 2.273 27.85a1.465 1.465 0 01-1.493.106 1.402 1.402 0 01-.78-1.25V2.812zm20.125 0H2.875v21.163l7.79-5.44a1.464 1.464 0 011.67 0l7.79 5.44V2.811z"
-        fill="#fff"
+        d="M12 4a8 8 0 100 16 8 8 0 000-16zM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12zm10-6a1 1 0 011 1v4.586l2.707 2.707a1 1 0 01-1.414 1.414l-3-3A1 1 0 0111 12V7a1 1 0 011-1z"
+        fill="#0D0D0D"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default SaveIcon;
+export default saveIcon
