@@ -111,3 +111,14 @@ export const getRequestOptions = (cookies) => {
   };
 };
 
+export const UPCOMING = gql`
+  query {
+    upcoming {
+      id
+      title
+      backdropUrl
+      releaseDate
+    }
+  }
+`;
+

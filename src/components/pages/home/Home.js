@@ -1,23 +1,20 @@
+import { useQuery } from '@apollo/client';
+import { useCookies } from 'react-cookie';
+import { useHistory } from 'react-router-dom';
+import { getRequestOptions, ME } from '../../../resources/queries';
 import styles from '../../../styles/Home.module.scss';
 import Layout from '../../layout/Layout';
 import MovieCard from '../../movie-card/MovieCard'
+import Upcoming from '../../sections/upcoming/Upcoming';
+
 
 const Home = () => {
   return (
-    <>
-      <Layout>
-        <div className={styles.home}>
-          <div className={styles.upcomingContainer}>
-            <span className={styles.upcomingTitle}>Upcoming</span>
-            <div className={styles.upcomingContent}>
-              <div className={styles.poster1}></div>
-              <div className={styles.poster2}></div>
-              <div className={styles.poster3}></div>
-            </div>
-          </div>
-        </div>
-      </Layout>
-    </>
+    <Layout>
+      <section className={styles.home}>
+        <Upcoming />
+      </section>
+    </Layout>
   );
 };
 
