@@ -1,0 +1,11 @@
+.upcoming {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .upcomingTitle {
+    font-family: 'Roboto';
+    padding: 10px;
+    border-left: 1px solid #ffffff;
+  }
+}
