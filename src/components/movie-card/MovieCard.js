@@ -8,6 +8,9 @@ import { ADDTOWATCHED, REMOVEFROMWATCHED, ADDTOFAVORITES, REMOVEFROMFAVORITES, A
 import { useMutation } from '@apollo/client';
 import { useCookies } from 'react-cookie';
 import cn from 'classnames'
+import SelectedHeart from '../icons/SelectedHeart';
+import SelectedSave from '../icons/SelectedSave';
+
 
 const MovieCard = ({ movie }) => {
     const [isWatched, setIsWatched] = useState(movie.isWatched);
@@ -133,17 +136,31 @@ const MovieCard = ({ movie }) => {
 
             </div>
             <div className={styles.icons}>
-                <span onClick={addToFavoriteHandler} className={cn({
-                    [styles.isFavorite]: isFavorite
-                })}>
-                    <Heart />
-                </span>
+                {isFavorite &&
+                    <span onClick={addToFavoriteHandler}>
+                        <SelectedHeart />
+                    </span>}
+                {!isFavorite &&
+                    <span onClick={addToFavoriteHandler}>
+                        <Heart />
+                    </span>
+                }
+
                 <span onClick={addToWatchedHandler}>
                     <Watch />
                 </span>
-                <span className={styles.save} onClick={addToWatchLaterHandler}>
-                    <Save />
-                </span>
+
+                {isWatchLater &&
+                    <span className={styles.save} onClick={addToWatchLaterHandler}>
+                        <SelectedSave />
+                    </span>
+                }
+
+                {!isWatchLater &&
+                    <span className={styles.save} onClick={addToWatchLaterHandler}>
+                        <Save />
+                    </span>
+                }
             </div>
         </div>
     );
