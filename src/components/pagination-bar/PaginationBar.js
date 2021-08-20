@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 const PaginationBar = ({ currentPage, lastPage }) => {
     const history = useHistory()
-    console.log(lastPage);
 
     const next = () => {
         history.replace(`/trending/${currentPage + 1}`)

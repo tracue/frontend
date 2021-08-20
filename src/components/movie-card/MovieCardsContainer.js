@@ -3,7 +3,6 @@ import MovieCard from './MovieCard';
 
 
 const MovieCardsContainer = ({ movies }) => {
-    console.log(movies);
     return (
         <>
             {movies && <div className={styles.container}>
