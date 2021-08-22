@@ -2,23 +2,7 @@ import * as React from "react"
 
 function IsWatched(props) {
     return (
-        <svg
-            width={26}
-            height={26}
-            viewBox="0 0 26 26"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            {...props}
-        >
-            <path
-                d="M16.25 13a3.25 3.25 0 11-6.5 0 3.25 3.25 0 016.5 0z"
-                fill="#717171"
-            />
-            <path
-                d="M23.719 12.515C21.38 7.84 17.229 5.417 13 5.417c-4.228 0-8.38 2.422-10.719 7.098a1.083 1.083 0 000 .97C4.619 18.16 8.771 20.582 13 20.582c4.228 0 8.38-2.422 10.719-7.098a1.083 1.083 0 000-.97zM13 18.418c-3.216 0-6.502-1.756-8.526-5.417C6.498 9.34 9.784 7.583 13 7.583S19.502 9.34 21.526 13c-2.024 3.66-5.31 5.417-8.526 5.417z"
-                fill="#717171"
-            />
-        </svg>
+        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="0.75em" width="0.75em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 10c0-3.9 3.1-7 7-7s7 3.1 7 7h-1c0-3.3-2.7-6-6-6s-6 2.7-6 6H1zm4 0c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3-3-1.3-3-3zm1 0c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2z"></path></svg>
     )
 }
 
