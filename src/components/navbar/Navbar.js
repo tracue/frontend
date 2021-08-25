@@ -1,8 +1,8 @@
 import styles from '../../styles/Navbar.module.scss';
-import { BsFillCaretDownFill } from 'react-icons/bs';
-import Account from '../account/Account';
+import UserMenu from '../user-menu/UserMenu';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames'
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -25,7 +25,7 @@ const Navbar = () => {
           <Link to="#">Lists</Link>
         </li>
         <li>
-          <Account />
+          <UserMenu />
         </li>
       </ul>
     </div>

@@ -1,5 +1,5 @@
-import styles from '../../styles/Account.module.scss';
-import { AUTHENTICATE, getRequestOptions, ME } from '../../resources/queries';
+import styles from '../../styles/UserMenu.module.scss';
+import { getRequestOptions, ME } from '../../resources/queries';
 import { useQuery } from '@apollo/client';
 import Avatar from './Avatar';
 import { useCookies } from 'react-cookie';
@@ -14,7 +14,7 @@ import { useRef } from 'react';
 import { useOnClickOutside } from '../../utils/Hooks';
 import Settings from '../icons/Settings';
 
-const Account = () => {
+const UserMenu = () => {
   const [cookies] = useCookies(['TRACUE_AUTH']);
   const [username, setUsername] = useState();
   const { loading, data, error } = useQuery(ME, getRequestOptions(cookies));
@@ -49,8 +49,10 @@ const Account = () => {
         style={open ? { display: 'block' } : { display: 'none' }}
       >
         <div className={styles.welcome}>
-          <Avatar />
-          <span>
+          <span className={styles.avatar}>
+            <Avatar />
+          </span>
+          <span className={styles.userName}>
             Welcome <strong>{username}</strong>
           </span>
         </div>
@@ -76,5 +78,4 @@ const Account = () => {
   );
 };
 
-export default Account;
-
+export default UserMenu;
