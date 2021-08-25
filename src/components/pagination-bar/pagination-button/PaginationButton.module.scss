@@ -1,7 +1,12 @@
-@import '../../../../styles/variables';
+@import '../../../styles/variables';
 
 .button {
   border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  text-decoration: none;
   color: white;
   border-radius: 50%;
   width: 35px;

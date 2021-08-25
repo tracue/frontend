@@ -45,6 +45,8 @@ export const TRENDING = gql`
         description
         posterUrl
         isWatched
+        isWatchLater
+        isFavorite
       }
       totalPages
     }
@@ -58,6 +60,7 @@ export const ADDTOWATCHED = gql`
     }
   }
 `;
+
 export const REMOVEFROMWATCHED = gql`
   mutation ($movieId: String!) {
     removeFromWatched(movieId: $movieId) {
@@ -94,6 +97,38 @@ export const CHANGEPASSWORD = gql`
   }
 `;
 
+export const ADDTOFAVORITES = gql`
+  mutation($movieId:String!){
+    addToFavorites(movieId:$movieId){
+      email
+    }
+  }
+`;
+
+export const REMOVEFROMFAVORITES = gql`
+  mutation($movieId:String!){
+    removeFromFavorites(movieId:$movieId){
+      email
+    }
+  }
+`;
+
+export const ADDTOWATCHLATER = gql`
+  mutation($movieId:String!){
+    addToWatchLater(movieId:$movieId){
+      email
+    }
+  }
+`;
+
+export const REMOVEFROMWATCHLATER = gql`
+  mutation($movieId:String!){
+    removeFromWatchLater(movieId:$movieId){
+      email
+    }
+  }
+`;
+
 export const getRequestOptions = (cookies) => {
   return {
     context: {
@@ -104,3 +139,15 @@ export const getRequestOptions = (cookies) => {
     fetchPolicy: 'no-cache',
   };
 };
+
+export const UPCOMING = gql`
+  query {
+    upcoming {
+      id
+      title
+      backdropUrl
+      releaseDate
+    }
+  }
+`;
+

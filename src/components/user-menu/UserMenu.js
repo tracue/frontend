@@ -10,6 +10,9 @@ import { useHistory } from 'react-router';
 import cn from 'classnames';
 import SaveIcon from '../icons/SaveIcon';
 import HeartIcon from '../icons/HeartIcon';
+import { useRef } from 'react';
+import { useOnClickOutside } from '../../utils/Hooks';
+import Settings from '../icons/Settings';
 
 const UserMenu = () => {
   const [cookies] = useCookies(['TRACUE_AUTH']);
@@ -27,17 +30,21 @@ const UserMenu = () => {
     history.push('/');
   };
 
+  const ref = useRef();
   const [open, setOpen] = useState(false);
+  useOnClickOutside(ref, () => setOpen(false));
 
   return (
     <div className={styles.account}>
       <Link
+        to="#"
         className={cn({ [styles.container]: true, [styles.opened]: open })}
         onClick={() => setOpen((p) => !p)}
       >
         User
       </Link>
       <div
+        ref={ref}
         className={styles.userMenu}
         style={open ? { display: 'block' } : { display: 'none' }}
       >
@@ -57,6 +64,10 @@ const UserMenu = () => {
           <li>
             <HeartIcon />
             <span>My Favorites</span>
+          </li>
+          <li>
+            <Settings />
+            <span>My Settings</span>
           </li>
         </ul>
         <div className={styles.logoutButton}>

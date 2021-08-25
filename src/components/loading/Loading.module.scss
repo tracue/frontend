@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+
+.container {
+  position: absolute;
+  display: flex;
+  background-image: linear-gradient(
+    180deg,
+    $background-dark-blue,
+    $background-light-blue
+  );
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  justify-content: center;
+  .title {
+    font-family: 'Ubuntu', sans-serif;
+    display: inline-block;
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 0.5rem;
+    color: white;
+  }
+}
+.copyright {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 0.75rem;
+  color: #ffffff;
+  position: fixed;
+  text-align: center;
+  margin: 0 auto;
+  bottom: 0.5rem;
+}

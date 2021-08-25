@@ -3,11 +3,10 @@ import MovieCard from './MovieCard';
 
 
 const MovieCardsContainer = ({ movies }) => {
-    console.log(movies);
     return (
         <>
             {movies && <div className={styles.container}>
-                {movies.trending.movies.map(movie => (
+                {movies.map(movie => (
                     <MovieCard movie={movie} />
                 ))}
             </div>}
