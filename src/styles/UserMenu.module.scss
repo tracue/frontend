@@ -47,7 +47,14 @@
       gap: 5px;
       align-items: center;
 
-      span {
+      .avatar {
+        border: 1px solid #b8b8b8;
+        border-radius: 50%;
+        height: 45px;
+        width: 45px;
+      }
+
+      .userName {
         font-family: 'Roboto';
         font-size: small;
         color: #ffffff;

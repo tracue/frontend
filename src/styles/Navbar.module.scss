@@ -133,6 +133,9 @@ a {
 
     li a {
       border-right: none;
+      &:hover {
+        background-color: #ffffff56;
+      }
     }
 
     .navlist {
