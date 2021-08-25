@@ -8,11 +8,11 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import cn from 'classnames';
-import SaveIcon from '../icons/SaveIcon';
-import HeartIcon from '../icons/HeartIcon';
+import SaveIcon from '../iconsSvg/SaveIcon';
+import HeartIcon from '../iconsSvg/HeartIcon';
 import { useRef } from 'react';
 import { useOnClickOutside } from '../../utils/Hooks';
-import Settings from '../icons/Settings';
+import Settings from '../iconsSvg/Settings';
 
 const Account = () => {
   const [cookies] = useCookies(['TRACUE_AUTH']);

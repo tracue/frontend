@@ -11,6 +11,7 @@ import SeeMore from './components/pages/trending/SeeMore';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
+import Movie from './components/pages/movie/Movie';
 
 
 function App({ isAuthenticate, Authenticate, disAuthenticate }) {
@@ -33,9 +34,7 @@ function App({ isAuthenticate, Authenticate, disAuthenticate }) {
 
   useEffect(() => {
     if (data?.me) {
-      console.log('before:  ' + isAuthenticate);
       Authenticate();
-      console.log('after:  ' + isAuthenticate);
     }
   }, [data]);
 
@@ -49,6 +48,9 @@ function App({ isAuthenticate, Authenticate, disAuthenticate }) {
           </Route>
           <PrivateRoute path="/home">
             <Home />
+          </PrivateRoute>
+          <PrivateRoute path="/movie/:id">
+            <Movie />
           </PrivateRoute>
           <PrivateRoute path="/trending/:page">
             <SeeMore title='Trending' QUERY={TRENDING} name={'trending'} />

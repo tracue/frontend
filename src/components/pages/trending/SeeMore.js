@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import styles from './SeeMore.module.scss'
 import Layout from "../../layout/Layout";
 import { getRequestOptions } from '../../../resources/queries';
-import { useLazyQuery, useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { useCookies } from "react-cookie";
 import MovieCardsContainer from "../../movie-card/MovieCardsContainer";
 import PaginationBar from "../../pagination-bar/PaginationBar";

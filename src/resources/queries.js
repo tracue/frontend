@@ -46,6 +46,7 @@ export const TRENDING = gql`
         isWatched
         isWatchLater
         isFavorite
+        tmdbId
       }
       totalPages
     }
@@ -100,17 +101,6 @@ export const REMOVEFROMWATCHLATER = gql`
   }
 `;
 
-export const getRequestOptions = (cookies) => {
-  return {
-    context: {
-      headers: {
-        authorization: cookies.TRACUE_AUTH ?? '',
-      },
-    },
-    fetchPolicy: 'no-cache',
-  };
-};
-
 export const UPCOMING = gql`
   query {
     upcoming {
@@ -121,4 +111,39 @@ export const UPCOMING = gql`
     }
   }
 `;
+
+export const MOVIE = gql`
+  query($tmdbId:Int!){
+    movie(tmdbId:$tmdbId){
+      id
+      title
+      releaseDate
+      description
+      genres
+      length
+      posterUrl
+      backdropUrl
+      imdbUrl
+      isFavorite
+      isWatched
+      isWatchLater
+      counts{
+        favorites
+        watched
+        watchLater
+      }
+    }
+  }
+`;
+
+export const getRequestOptions = (cookies) => {
+  return {
+    context: {
+      headers: {
+        authorization: cookies.TRACUE_AUTH ?? '',
+      },
+    },
+    fetchPolicy: 'no-cache',
+  };
+};
 
