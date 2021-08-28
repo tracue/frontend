@@ -64,33 +64,33 @@ const MovieCard = ({ movie }) => {
         if (input.length > 5) {
             return input.substring(0, 150) + '...';
         }
-        return (
-            <div className={styles.card}>
+    }
+    return (
+        <div className={styles.card}>
 
-                {isWatched && <span className={styles.isWatched}><IsWatched />Watched</span>}
-                <div className={styles.imageContainer}>
-                    <img className={styles.image} src={movie.posterUrl} />
-                    <div className={styles.gradient}>
-                        <h3 className={styles.title} >{movie.title}</h3>
-                    </div>
-                </div>
-                <div className={styles.cardDetails}>
-                    <Dotdotdot clamp={10}>
-                        <Link to={`/movie/${movie.tmdbId}`}>
-                            <h3 className={styles.movieTitle}>{movie.title}</h3>
-                        </Link>
-                        <p className={styles.description}>{standardization(movie.description)}</p>
-                    </Dotdotdot>
-                </div>
-                <div className={styles.icons}>
-                    <FavoriteIcon movie={movie} />
-                    <WatchedIcon addToWatchedHandler={addToWatchedHandler} />
-                    <WatchLaterIcon movie={movie} />
+            {isWatched && <span className={styles.isWatched}><IsWatched />Watched</span>}
+            <div className={styles.imageContainer}>
+                <img className={styles.image} src={movie.posterUrl} />
+                <div className={styles.gradient}>
+                    <h3 className={styles.title} >{movie.title}</h3>
                 </div>
             </div>
-        );
-    }
+            <div className={styles.cardDetails}>
+                <Dotdotdot clamp={10}>
+                    <Link to={`/movie/${movie.tmdbId}`}>
+                        <h3 className={styles.movieTitle}>{movie.title}</h3>
+                    </Link>
+                    <p className={styles.description}>{standardization(movie.description)}</p>
+                </Dotdotdot>
+            </div>
+            <div className={styles.icons}>
+                <FavoriteIcon movie={movie} />
+                <WatchedIcon addToWatchedHandler={addToWatchedHandler} />
+                <WatchLaterIcon movie={movie} />
+            </div>
+        </div>
+    );
+};
 
-
-    export default MovieCard;
+export default MovieCard;
 

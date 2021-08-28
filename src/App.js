@@ -63,11 +63,12 @@ function App({ isAuthenticate, Authenticate, disAuthenticate }) {
           </PrivateRoute>
           <PrivateRoute path="/favorites">
             <SeeMore title='Favorites' QUERY={FAVORITES} name={'favorites'} meQuery={true} />
-            <PrivateRoute path="/account">
-              <Account />
-            </PrivateRoute>
-
           </PrivateRoute>
+          <PrivateRoute path="/account">
+            <Account />
+          </PrivateRoute>
+
+
           <ToastContainer />
         </div>
       </Router>
