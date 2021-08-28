@@ -32,14 +32,17 @@ const LandingPage = () => {
           <h1>TRACUE</h1>
           <h2>Keep track of what you watch.</h2>
         </div>
-        <div
-          className={cn({
-            [styles.hidden]: loading,
-            [styles.visible]: !loading,
-          })}
-        >
-          <AuthFrom />
-        </div>
+        {!data &&
+          <div
+            className={cn({
+              [styles.hidden]: loading,
+              [styles.visible]: !loading,
+            })}
+          >
+            <AuthFrom />
+          </div>
+        }
+
         <span className={styles.copyright}>Copyright © 2021</span>
       </div>
     </>

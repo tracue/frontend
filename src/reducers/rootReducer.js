@@ -4,7 +4,6 @@ const initState = {
 
 const rootReducer = (state = initState, action) => {
     if (action.type == 'AUTHENTICATE') {
-        console.log(action);
         return {
             isAuthenticate: true
         }

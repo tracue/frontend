@@ -37,20 +37,22 @@ export const ME = gql`
 `;
 
 export const TRENDING = gql`
-  query ($page: Int!) {
-    trending(page: $page) {
-      movies {
-        id
-        title
-        description
-        posterUrl
-        isWatched
-        isWatchLater
-        isFavorite
-      }
-      totalPages
+query($page:Int!,$limit:Int){
+  trending(page:$page,limit:$limit){
+    movies{
+      id
+      title
+      description
+      posterUrl
+      isWatched
+      isWatchLater
+      isFavorite
+      tmdbId
+
     }
+    totalPages
   }
+}
 `;
 
 export const ADDTOWATCHED = gql`
@@ -129,17 +131,6 @@ export const REMOVEFROMWATCHLATER = gql`
   }
 `;
 
-export const getRequestOptions = (cookies) => {
-  return {
-    context: {
-      headers: {
-        authorization: cookies.TRACUE_AUTH ?? '',
-      },
-    },
-    fetchPolicy: 'no-cache',
-  };
-};
-
 export const UPCOMING = gql`
   query {
     upcoming {
@@ -150,4 +141,90 @@ export const UPCOMING = gql`
     }
   }
 `;
+
+export const MOVIE = gql`
+  query($tmdbId:Int!){
+    movie(tmdbId:$tmdbId){
+      id
+      title
+      releaseDate
+      description
+      genres
+      length
+      posterUrl
+      backdropUrl
+      imdbUrl
+      isFavorite
+      isWatched
+      isWatchLater
+      counts{
+        favorites
+        watched
+        watchLater
+      }
+    }
+  }
+`;
+
+export const WATCHED = gql`
+  query($limit:Int){
+    me{
+      watched(limit:$limit){
+        id
+        title
+        description
+        posterUrl
+        isWatched
+        isWatchLater
+        isFavorite
+        tmdbId
+      }
+    }
+  }
+`;
+
+export const WATCHLATER = gql`
+  query($limit:Int){
+    me{
+      watchLater(limit:$limit){
+        id
+        title
+        description
+        posterUrl
+        isWatched
+        isWatchLater
+        isFavorite
+        tmdbId
+      }
+    }
+  }
+`;
+
+export const FAVORITES = gql`
+  query($limit:Int){
+    me{
+      favorites(limit:$limit){
+        id
+        title
+        description
+        posterUrl
+        isWatched
+        isWatchLater
+        isFavorite
+        tmdbId
+      }
+    }
+  }
+`;
+
+export const getRequestOptions = (cookies) => {
+  return {
+    context: {
+      headers: {
+        authorization: cookies.TRACUE_AUTH ?? '',
+      },
+    },
+    fetchPolicy: 'no-cache',
+  };
+};
 

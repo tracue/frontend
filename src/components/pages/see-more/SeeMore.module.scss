@@ -10,3 +10,12 @@
     width: 100%;
   }
 }
+.emptyContainer{
+  text-align: center;
+  position: relative;
+  .empty{
+      color: #ffffff;
+      font-family: 'Roboto';
+      font-weight: normal;
+  }
+}

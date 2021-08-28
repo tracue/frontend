@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+$x: 332px;
 .card {
   position: relative;
   display: flex;
@@ -9,9 +10,8 @@
   margin: 10px 0;
   .gradient {
     position: absolute;
-    left: 0;
     bottom: 0;
-    width: 290px;
+    width: 100%;
     height: 50%;
     background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     opacity: 1;
@@ -20,11 +20,11 @@
     border-radius: 0 0 0 8px;
   }
   .title {
-    width: 150px;
+    // width: calc(#{$x} * 0.451);
     position: absolute;
     left: 0;
     bottom: 0;
-    margin: 18px;
+    margin: 16px;
     color: white;
     font: bold 16px 'Ubuntu';
     visibility: visible;
@@ -36,8 +36,8 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 10px;
-    width: 42px;
+    margin-bottom: 5px;
+    // width: calc(#{$x} * 0.126);
     span {
       margin: 4px 8px;
       &:hover {
@@ -46,7 +46,7 @@
       path {
         transition: fill 0.25s;
         fill: $background-dark-blue;
-        height: 32px;
+        // height: calc(#{$x} * 0.09);
       }
     }
   }
@@ -68,11 +68,17 @@
       width: 20px;
     }
   }
-  .image {
-    width: 290px;
+  .imageContainer {
+    overflow: hidden;
+    width: 100%;
     border-radius: 8px 0 0 8px;
-    object-fit: cover;
+    position: relative;
+    display: inline-block;
     transition: width 0.25s;
+    .image {
+      width: 100%;
+      border-radius: 8px 0 0 8px;
+    }
   }
 }
 .cardDetails {
@@ -83,10 +89,11 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  transition: visibility 0.25s, opacity 0.25s linear;
   .movieTitle {
     display: inline-block;
     color: black;
-    width: 125px !important;
+    width: calc(#{$x} * 0.376) !important;
     display: inline-block;
     margin: 0;
     padding: 10px 10px 0 10px;
@@ -102,7 +109,7 @@
   .description {
     visibility: hidden;
     display: inline-block;
-    width: 135px;
+    width: calc(#{$x} * 0.4);
     opacity: 0;
     transition: visibility 0.25s, opacity 0.25s linear;
     font-size: 13px;
@@ -114,9 +121,7 @@
 }
 .card {
   &:hover {
-    width: 332px !important;
     .gradient {
-      width: 146px;
       opacity: 0;
       visibility: hidden;
     }
@@ -128,15 +133,14 @@
     .cardDetails {
       display: block;
     }
-    .image {
-      width: 146px;
+    .imageContainer {
+      width: 44%;
     }
-
     .description {
       visibility: visible;
       opacity: 1;
       display: block;
-      align-self: center;
+      // align-self: center;
     }
 
     .isWatched {
@@ -147,6 +151,17 @@
       opacity: 1;
       display: block;
       align-self: center;
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .card {
+    width: 300px;
+    height: 180px;
+    .description {
+      font-size: 11px;
+      width: 122px;
     }
   }
 }

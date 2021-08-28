@@ -1,0 +1,60 @@
+@import '../../styles/variables';
+.container {
+    margin-top: 50px;
+    position: relative;
+    .headerContainer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a{
+            text-decoration: none;
+        }
+        .header {
+          padding: 10px;
+          border-left: 1px solid white;
+          color: #ffffff;
+          font-family: 'Roboto';
+          position: relative;
+          display: inline;
+          text-decoration: none;
+        }
+        .seeMore{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    }
+    .content{
+        padding: 20px 0;
+    }
+  }
+.seeMore{
+    font-size: 13px;
+    text-decoration: none;
+    margin-right: 20px;
+    svg{
+        path{
+            transition: color 0.25s;
+            color: #ffffff;
+        }
+        :first-child{
+            color: transparent;
+        }
+    }
+    &:hover{
+        svg{
+            :first-child{
+                color: rgba(255,255,255,0.3);
+            }
+        }
+        cursor: pointer;
+    }
+}
+.emptyContainer{
+    text-align: center;
+    .empty{
+        color: #ffffff;
+        font-family: 'Roboto';
+        font-weight: normal;
+    }
+}
