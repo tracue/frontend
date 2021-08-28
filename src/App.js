@@ -12,7 +12,8 @@ import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import Movie from './components/pages/movie/Movie';
-
+import { ToastContainer } from 'react-toastify';
+import Account from './components/pages/account/Account';
 
 function App({ isAuthenticate, Authenticate, disAuthenticate }) {
   const [cookies] = useCookies(['TRACUE_AUTH']);
@@ -39,7 +40,6 @@ function App({ isAuthenticate, Authenticate, disAuthenticate }) {
   }, [data]);
 
   return (
-
     <CookiesProvider>
       <Router>
         <div className="App">
@@ -63,25 +63,33 @@ function App({ isAuthenticate, Authenticate, disAuthenticate }) {
           </PrivateRoute>
           <PrivateRoute path="/favorites">
             <SeeMore title='Favorites' QUERY={FAVORITES} name={'favorites'} meQuery={true} />
+            <PrivateRoute path="/account">
+              <Account />
+            </PrivateRoute>
+
           </PrivateRoute>
+          <ToastContainer />
         </div>
       </Router>
     </CookiesProvider>
-
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticate: state.isAuthenticate
-  }
-}
+    isAuthenticate: state.isAuthenticate,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    Authenticate: () => { dispatch({ type: 'AUTHENTICATE' }) },
-    disAuthenticate: () => { dispatch({ type: 'DISAUTHENTICATE' }) }
-  }
-}
+    Authenticate: () => {
+      dispatch({ type: 'AUTHENTICATE' });
+    },
+    disAuthenticate: () => {
+      dispatch({ type: 'DISAUTHENTICATE' });
+    },
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -8,11 +8,7 @@ const Avatar = () => {
 
   const { loading, data } = useQuery(ME, getRequestOptions(cookies));
 
-  return (
-    <div className={styles.avatar}>
-      <img src={data?.me?.avatar ?? ''} alt="avatar" />
-    </div>
-  );
+  return <img className={styles.avatar} src={data?.me?.avatar ?? ''} alt="avatar" />;
 };
 
 export default Avatar;

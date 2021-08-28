@@ -2,7 +2,7 @@ import styles from '../../../../styles/AuthForm.module.scss';
 import { useHistory } from 'react-router';
 import { useState } from 'react';
 import validator from 'validator';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { LOGIN, SIGN_UP } from '../../../../resources/queries';
 import { useMutation } from '@apollo/client';
@@ -175,7 +175,6 @@ const AuthFrom = () => {
           <input type="submit" value="LOGIN" />
         </div>
       </form>
-      <ToastContainer />
     </div>
   );
 };

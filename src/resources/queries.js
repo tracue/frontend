@@ -27,10 +27,11 @@ export const AUTHENTICATE = gql`
 export const ME = gql`
   query {
     me {
+      email
       username
+      gender
       avatar
       bio
-      email
     }
   }
 `;
@@ -47,6 +48,7 @@ query($page:Int!,$limit:Int){
       isWatchLater
       isFavorite
       tmdbId
+
     }
     totalPages
   }
@@ -54,16 +56,44 @@ query($page:Int!,$limit:Int){
 `;
 
 export const ADDTOWATCHED = gql`
-  mutation($movieId:String!){
-    addToWatched(movieId:$movieId){
+  mutation ($movieId: String!) {
+    addToWatched(movieId: $movieId) {
       email
     }
   }
 `;
 
 export const REMOVEFROMWATCHED = gql`
-  mutation($movieId:String!){
-    removeFromWatched(movieId:$movieId){
+  mutation ($movieId: String!) {
+    removeFromWatched(movieId: $movieId) {
+      email
+    }
+  }
+`;
+
+export const UPDATEUSER = gql`
+  mutation ($input: UserEditInput) {
+    updateUser(input: $input) {
+      email
+      username
+      gender
+      avatar
+      bio
+    }
+  }
+`;
+
+export const CHANGEEMAIL = gql`
+  mutation ($newEmail: String) {
+    changeEmail(newEmail: $newEmail) {
+      email
+    }
+  }
+`;
+
+export const CHANGEPASSWORD = gql`
+  mutation ($input: PasswordEditInput) {
+    changePassword(input: $input) {
       email
     }
   }
