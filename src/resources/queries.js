@@ -36,21 +36,21 @@ export const ME = gql`
 `;
 
 export const TRENDING = gql`
-  query($page:Int!){
-    trending(page:$page){
-      movies{
-        id
-        title
-        description
-        posterUrl
-        isWatched
-        isWatchLater
-        isFavorite
-        tmdbId
-      }
-      totalPages
+query($page:Int!,$limit:Int){
+  trending(page:$page,limit:$limit){
+    movies{
+      id
+      title
+      description
+      posterUrl
+      isWatched
+      isWatchLater
+      isFavorite
+      tmdbId
     }
+    totalPages
   }
+}
 `;
 
 export const ADDTOWATCHED = gql`
@@ -131,6 +131,57 @@ export const MOVIE = gql`
         favorites
         watched
         watchLater
+      }
+    }
+  }
+`;
+
+export const WATCHED = gql`
+  query($limit:Int){
+    me{
+      watched(limit:$limit){
+        id
+        title
+        description
+        posterUrl
+        isWatched
+        isWatchLater
+        isFavorite
+        tmdbId
+      }
+    }
+  }
+`;
+
+export const WATCHLATER = gql`
+  query($limit:Int){
+    me{
+      watchLater(limit:$limit){
+        id
+        title
+        description
+        posterUrl
+        isWatched
+        isWatchLater
+        isFavorite
+        tmdbId
+      }
+    }
+  }
+`;
+
+export const FAVORITES = gql`
+  query($limit:Int){
+    me{
+      favorites(limit:$limit){
+        id
+        title
+        description
+        posterUrl
+        isWatched
+        isWatchLater
+        isFavorite
+        tmdbId
       }
     }
   }

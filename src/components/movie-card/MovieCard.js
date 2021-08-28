@@ -62,9 +62,12 @@ const MovieCard = ({ movie }) => {
         <div className={styles.card}>
 
             {isWatched && <span className={styles.isWatched}><IsWatched />Watched</span>}
-            <img className={styles.image} src={movie.posterUrl} />
-            <div className={styles.gradient}></div>
-            <h3 className={styles.title} >{movie.title}</h3>
+            <div className={styles.imageContainer}>
+                <img className={styles.image} src={movie.posterUrl} />
+                <div className={styles.gradient}>
+                    <h3 className={styles.title} >{movie.title}</h3>
+                </div>
+            </div>
             <div className={styles.cardDetails}>
                 <Dotdotdot clamp={10}>
                     <Link to={`/movie/${movie.tmdbId}`}>

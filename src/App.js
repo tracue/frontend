@@ -5,9 +5,9 @@ import PrivateRoute from './components/private-route/PrivateRoute';
 import Home from './components/pages/home/Home';
 import { CookiesProvider } from 'react-cookie';
 import { useCookies } from 'react-cookie';
-import { TRENDING } from './resources/queries';
+import { TRENDING, WATCHED, WATCHLATER, FAVORITES } from './resources/queries';
 import { ME } from './resources/queries';
-import SeeMore from './components/pages/trending/SeeMore';
+import SeeMore from './components/pages/see-more/SeeMore';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
@@ -53,7 +53,16 @@ function App({ isAuthenticate, Authenticate, disAuthenticate }) {
             <Movie />
           </PrivateRoute>
           <PrivateRoute path="/trending/:page">
-            <SeeMore title='Trending' QUERY={TRENDING} name={'trending'} />
+            <SeeMore title='Trending' QUERY={TRENDING} name={'trending'} meQuery={false} />
+          </PrivateRoute>
+          <PrivateRoute path="/watched">
+            <SeeMore title='Watched' QUERY={WATCHED} name={'watched'} meQuery={true} />
+          </PrivateRoute>
+          <PrivateRoute path="/watchLater">
+            <SeeMore title='WatchLater' QUERY={WATCHLATER} name={'watchLater'} meQuery={true} />
+          </PrivateRoute>
+          <PrivateRoute path="/favorites">
+            <SeeMore title='Favorites' QUERY={FAVORITES} name={'favorites'} meQuery={true} />
           </PrivateRoute>
         </div>
       </Router>
