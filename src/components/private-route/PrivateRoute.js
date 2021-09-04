@@ -21,8 +21,12 @@ const PrivateRoute = ({ children, isAuthenticate, ...rest }) => {
   });
 
   useEffect(() => {
-    if (isAuthenticate) {
+    console.log(isAuthenticate);
+    if (isAuthenticate === 1) {
+      console.log("done");
       setAuth(true)
+    } else if (isAuthenticate === -1) {
+      history.push('/')
     }
   }, [isAuthenticate])
 

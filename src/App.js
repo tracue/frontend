@@ -26,14 +26,17 @@ function App({ isAuthenticate, Authenticate, disAuthenticate }) {
     fetchPolicy: 'no-cache',
   });
   useEffect(() => {
-    if (!isAuthenticate) {
+    if (isAuthenticate != 0) {
       if (cookies.TRACUE_AUTH) {
         validation();
+      } else {
+        disAuthenticate();
       }
     }
-  }, []);
+  }, [cookies.TRACUE_AUTH]);
 
   useEffect(() => {
+    console.log("data is here");
     if (data?.me) {
       Authenticate();
     }
