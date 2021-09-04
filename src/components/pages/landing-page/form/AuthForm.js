@@ -79,7 +79,8 @@ const AuthFrom = () => {
               path: '/',
               maxAge: 60 * 60 * 24 * 30,
             });
-            history.push('/home');
+            setTimeout(() => { history.push('/home'); }, 250);
+
           }
         },
         (error) => {

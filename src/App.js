@@ -5,42 +5,38 @@ import PrivateRoute from './components/private-route/PrivateRoute';
 import Home from './components/pages/home/Home';
 import { CookiesProvider } from 'react-cookie';
 import { useCookies } from 'react-cookie';
-import { TRENDING, WATCHED, WATCHLATER, FAVORITES } from './resources/queries';
+import { TRENDING, WATCHED, WATCHLATER, FAVORITES, getRequestOptions } from './resources/queries';
 import { ME } from './resources/queries';
 import SeeMore from './components/pages/see-more/SeeMore';
-import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import Movie from './components/pages/movie/Movie';
 import { ToastContainer } from 'react-toastify';
 import Account from './components/pages/account/Account';
+import { useSelector, useDispatch } from 'react-redux';
+import authenticate from './actionCreators/authenticate';
 
-function App({ isAuthenticate, Authenticate, disAuthenticate }) {
+function App() {
   const [cookies] = useCookies(['TRACUE_AUTH']);
-  const [validation, { loading, data, error }] = useLazyQuery(ME, {
-    context: {
-      headers: {
-        authorization: cookies.TRACUE_AUTH,
-      },
-    },
-    fetchPolicy: 'no-cache',
-  });
+  const isAuthenticated = useSelector((state) => state.authentication)
+  const dispatch = useDispatch();
+  const [validation, { loading, data, error }] = useLazyQuery(ME);
   useEffect(() => {
-    if (isAuthenticate != 0) {
+    if (!isAuthenticated) {
       if (cookies.TRACUE_AUTH) {
-        validation();
+        validation(getRequestOptions(cookies));
       } else {
-        disAuthenticate();
+        dispatch(authenticate(false));
       }
     }
   }, [cookies.TRACUE_AUTH]);
 
   useEffect(() => {
-    console.log("data is here");
-    if (data?.me) {
-      Authenticate();
+    console.log(error);
+    if (data && data.me) {
+      dispatch(authenticate(true));
     }
-  }, [data]);
+  }, [error, data]);
 
   return (
     <CookiesProvider>
@@ -79,21 +75,4 @@ function App({ isAuthenticate, Authenticate, disAuthenticate }) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticate: state.isAuthenticate,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    Authenticate: () => {
-      dispatch({ type: 'AUTHENTICATE' });
-    },
-    disAuthenticate: () => {
-      dispatch({ type: 'DISAUTHENTICATE' });
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -7,7 +7,6 @@ $x: 332px;
   width: 332px;
   border-radius: 8px;
   background-color: white;
-  margin: 10px 0;
   .gradient {
     position: absolute;
     bottom: 0;
@@ -73,10 +72,11 @@ $x: 332px;
     position: relative;
     display: inline-block;
     transition: width 0.25s;
-    object-fit: cover;
     .image {
       width: 100%;
-
+      object-fit: cover;
+      max-height: 100%;
+      min-width: 100%;
       border-radius: 8px 0 0 8px;
     }
   }
@@ -121,6 +121,7 @@ $x: 332px;
 }
 .imageAndDescription {
   display: flex;
+  flex: 1;
   &:hover {
     .gradient {
       opacity: 0;
