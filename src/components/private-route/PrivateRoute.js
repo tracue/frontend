@@ -1,30 +1,21 @@
 import { Route } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
-import { useLazyQuery } from '@apollo/client';
-import { ME } from '../../resources/queries';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Loading from '../loading/Loading';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const PrivateRoute = ({ children, isAuthenticate, ...rest }) => {
-  const [cookies] = useCookies(['TRACUE_AUTH']);
+const PrivateRoute = ({ children, ...rest }) => {
+  const isAuthenticated = useSelector((state) => state.authentication);
   const [auth, setAuth] = useState(false);
-  const history = useHistory();
-  const [validation, { loading, data, error }] = useLazyQuery(ME, {
-    context: {
-      headers: {
-        authorization: cookies.TRACUE_AUTH,
-      },
-    },
-    fetchPolicy: 'no-cache',
-  });
+  const history = useHistory();;
 
   useEffect(() => {
-    if (isAuthenticate) {
+    if (isAuthenticated) {
       setAuth(true)
+    } else {
+      history.push('/')
     }
-  }, [isAuthenticate])
+  }, [isAuthenticated])
 
 
   return (
@@ -43,11 +34,5 @@ const PrivateRoute = ({ children, isAuthenticate, ...rest }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticate: state.isAuthenticate
-  }
-}
 
-
-export default connect(mapStateToProps)(PrivateRoute);
+export default PrivateRoute;
