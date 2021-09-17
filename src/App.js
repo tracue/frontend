@@ -22,19 +22,18 @@ function App() {
   const dispatch = useDispatch();
   const [validation, { loading, data, error }] = useLazyQuery(ME);
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (isAuthenticated !== 'true') {
       if (cookies.TRACUE_AUTH) {
         validation(getRequestOptions(cookies));
       } else {
-        dispatch(authenticate(false));
+        dispatch(authenticate("false"));
       }
     }
   }, [cookies.TRACUE_AUTH]);
 
   useEffect(() => {
-    console.log(error);
     if (data && data.me) {
-      dispatch(authenticate(true));
+      dispatch(authenticate("true"));
     }
   }, [error, data]);
 

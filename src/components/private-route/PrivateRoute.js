@@ -10,9 +10,9 @@ const PrivateRoute = ({ children, ...rest }) => {
   const history = useHistory();;
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated === 'true') {
       setAuth(true)
-    } else {
+    } else if (isAuthenticated === 'false') {
       history.push('/')
     }
   }, [isAuthenticated])
